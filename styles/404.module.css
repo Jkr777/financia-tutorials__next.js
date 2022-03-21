@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.container__status {
+  font-size: 8rem;
+}
+
+.container__mess {
+  font-size: 2.4rem;
+}
+
+.container__info {
+  text-transform: uppercase;
+}
+
+.container__btn {
+  width: 20rem;
+  border: none;
+  padding: 1rem 0;
+  cursor: pointer;
+  margin-top: 1rem;
+  border-radius: .5rem;
+  background-color: #530ae0;
+  color: #ede6fb;
+  font-weight: bold;
+  transition: all .2s;
+}
+
+.container__btn:hover {
+  background-color: #ba9df2;
+  color: #210459;
+}
