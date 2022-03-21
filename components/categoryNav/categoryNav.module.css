@@ -1,0 +1,22 @@
+.nav {
+  border-bottom: .3rem solid var(--color-5);
+  border-top: .3rem solid var(--color-5);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.nav__item {
+  color: var(--color-5);
+  margin-right: var(--distance-2);
+  cursor: pointer;
+}
+
+.nav__item:hover {
+  color: var(--color-6);
+}
+
+.nav__item--active {
+  cursor: pointer;
+  color: var(--color-6);
+  margin-right: var(--distance-2);
+}

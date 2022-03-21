@@ -1,0 +1,13 @@
+.container {
+  margin-bottom: var(--distance-2);
+}
+
+.title {
+  font-size: var(--size-title);
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: var(--size-sub-title);
+  margin-bottom: 2rem;
+}

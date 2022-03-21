@@ -1,0 +1,17 @@
+.link {
+  color: var(--color-2);
+  margin-left: var(--distance-2);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.link:hover {
+  color: var(--color-0);
+  border-bottom: solid var(--color-0) .1rem;
+}
+
+.link--active {
+  color: var(--color-0);
+  margin-left: var(--distance-2);
+  border-bottom: solid var(--color-0) .1rem;
+}

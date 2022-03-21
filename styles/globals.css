@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400&family=Nunito:ital,wght@0,300;1,300&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* 1rem = 10px, 10px/16px = 62.5% */
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+
+  --color-0: #003F91;
+  --color-1: #1C0D1C;
+  --color-2: #00295E;
+  --color-3: #E1F079;
+  --color-4: #DBEDEF;
+  --color-5: #80B7FF;
+  --color-6: #1A7EFF;
+  --color-7: #80B7FF;
+  --color-8: #999999;
+  --color-9: #C5D219;
+
+
+  --size-title: 3.2rem;
+  --size-sub-title: 2.4rem;
+  --size-sub-title2: 1.8rem;
+
+  --distance-0: 2rem;
+  --distance-1: 1.5rem;
+  --distance-2: 3rem;
+}
+
+body {
+  font-size: 1.6rem;
+  color: #1C0D1C;
+  background-color: #edffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
