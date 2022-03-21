@@ -8,13 +8,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
+  const router = useRouter();
+
   useEffect(() => check(), []);
 
   // register user
   async function register(data) {
     try {
       const res = await axiosInstance.post('/api/auth/register', data);
-      // manualAddToken(res.headers["tradeSmart"]);
       setUser(res.data);
     } catch(err) {
       setError(err.response.data);
@@ -33,7 +34,13 @@ export const AuthProvider = ({ children }) => {
 
   // logout user
   async function logout() {
-    console.log("logout");
+    try {
+      await axiosInstance.post('/api/auth/logout');
+      setUser(null);
+      router.replace('/');
+    } catch(err) {
+      setError(err.response.data);
+    }
   }
 
   // check if user is logged in
@@ -41,6 +48,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axiosInstance.get('/api/user');
       setUser(res.data);
+      router.replace('/profile');
     } catch (err) {
       setError(err.response.data);
     }

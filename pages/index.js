@@ -6,8 +6,6 @@ import helpers from '../styles/helpers.module.css'
 import { DUMMY_LINKS, DUMMY_CATEGORIES } from "../dev/linksData";
 
 function Home() {
-  console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID, "naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-
   return (
     <>
       <section className={styles.container}>

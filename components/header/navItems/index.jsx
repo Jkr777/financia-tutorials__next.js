@@ -4,7 +4,6 @@ import classes from "./navItems.module.css";
 function NavItems({ path, auth, logout }) {
   return (
     <div>
-      {console.log(auth)}        
       { auth ? <>
         <Link href="/create-link">
           <a className={path === "/create-link" ? classes['link--active'] : classes.link}>Create Link</a>

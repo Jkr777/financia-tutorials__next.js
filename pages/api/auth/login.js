@@ -31,7 +31,6 @@ export default async function handler(req, res) {
 
         res.status(200).send(_.pick(user, ["email", "userName"]));
       } catch (error) {
-        console.log(error)
         res.status(400).send("Invalid email or password");
       }
 
