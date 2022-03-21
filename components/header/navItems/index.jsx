@@ -7,6 +7,10 @@ function NavItems({ path, auth, logout }) {
       { auth ? <>
         <Link href="/create-link">
           <a className={path === "/create-link" ? classes['link--active'] : classes.link}>Create Link</a>
+        </Link>          
+        
+        <Link href="/dashboard">
+          <a className={path === "/dashboard" ? classes['link--active'] : classes.link}>Dashboard</a>
         </Link>  
         <a onClick={logout} className={classes.link}>Log Out</a> 
       </>

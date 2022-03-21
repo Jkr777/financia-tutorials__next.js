@@ -14,21 +14,21 @@ export default async function handler(req, res) {
         if(!req.headers.cookie) {
           return res.status(403).send("Not Authorized");
         }
+
         const { tradeSmart:token } = cookie.parse(req.headers.cookie);
-        const decoded = jwt.verify(token, process.env.JWT_TOKEN);
+        const decoded = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_TOKEN);
 
         const user = await User.findOne({ _id: decoded._id });
         if(!user) return res.status(401).send('User not found');
 
         res.status(200).send(user);
       } catch (error) {
-        console.log(error)
-        res.status(401).send('User not found');
+        res.status(401).send('Not Authorized');
       }
 
       break;
     default:
-      res.status(401).send('User not found');
+      res.status(401).send('Not Authorized');
       break;
   }
 }

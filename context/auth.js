@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axiosInstance.post('/api/auth/register', data);
       setUser(res.data);
+      router.replace('/profile');
     } catch(err) {
       setError(err.response.data);
     }
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axiosInstance.post('/api/auth/login', data);
       setUser(res.data);
+      router.replace('/profile');
     } catch(err) {
       setError(err.response.data);
     }
@@ -48,7 +50,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axiosInstance.get('/api/user');
       setUser(res.data);
-      router.replace('/profile');
     } catch (err) {
       setError(err.response.data);
     }
