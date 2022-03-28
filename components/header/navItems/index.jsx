@@ -5,6 +5,11 @@ function NavItems({ path, auth, logout }) {
   return (
     <div>
       { auth ? <>
+        {auth.role === "admin" ? <Link href="/admin">
+            <a className={path === "/admin" ? classes['link--active'] : classes.link}>Admin</a>
+          </Link>          
+          : null
+         }
         <Link href="/create-link">
           <a className={path === "/create-link" ? classes['link--active'] : classes.link}>Create Link</a>
         </Link>          

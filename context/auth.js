@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, Children } from "react";
-import { axiosInstance } from "../utils/axios";
+import axios from "axios";
 import { useRouter } from 'next/router';
 
 const AuthContext = createContext();
@@ -15,9 +15,9 @@ export const AuthProvider = ({ children }) => {
   // register user
   async function register(data) {
     try {
-      const res = await axiosInstance.post('/api/auth/register', data);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/auth/register`, data);
       setUser(res.data);
-      router.replace('/profile');
+      router.replace('/dashboard');
     } catch(err) {
       setError(err.response.data);
     }
@@ -26,9 +26,9 @@ export const AuthProvider = ({ children }) => {
   // login user
   async function login(data) {
     try {
-      const res = await axiosInstance.post('/api/auth/login', data);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/auth/login`, data);
       setUser(res.data);
-      router.replace('/profile');
+      router.replace('/dashboard');
     } catch(err) {
       setError(err.response.data);
     }
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   // logout user
   async function logout() {
     try {
-      await axiosInstance.post('/api/auth/logout');
+      await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/auth/logout`);
       setUser(null);
       router.replace('/');
     } catch(err) {
@@ -48,9 +48,10 @@ export const AuthProvider = ({ children }) => {
   // check if user is logged in
   async function check() {
     try {
-      const res = await axiosInstance.get('/api/user');
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/user`);
       setUser(res.data);
     } catch (err) {
+      console.log(err);
       setError(err.response.data);
     }
   }

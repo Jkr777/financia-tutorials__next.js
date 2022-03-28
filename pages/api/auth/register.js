@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         
         res.setHeader('Set-Cookie', cookie.serialize("tradeSmart", token, {
           httpOnly: true,
-          // secure: true,
+          secure: process.env.NEXT_PUBLIC_NODE_ENV === "DEV" ? false : true,
           maxAge: '54000000',
           sameSite: 'strict',
           path: '/'
