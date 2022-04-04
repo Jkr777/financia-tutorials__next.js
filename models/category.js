@@ -6,6 +6,7 @@ const categorySchema = new mongoose.Schema({
     maxLength: 255,
     required: true,
     index: true,
+    lowercase: true,
     trim: true
   },
   info: {
@@ -13,11 +14,13 @@ const categorySchema = new mongoose.Schema({
     maxLength: 555,
     minMax: 55,
     required: true,
+    lowercase: true,
     trim: true
   },
   imgUrl: {
     type: String,
     maxLength: 255,
+    lowercase: true,
     required: true,
     trim: true 
   }

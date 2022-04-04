@@ -44,8 +44,8 @@ function DashboardNav({ page, path }) {
 
   return (
     <nav className={styles.nav}>
-      {nav[page].map(e => <Link href={e.path}>
-        <a className={e.path === path ? styles['nav__link--active'] : styles.nav__link } key={e.name + e.path}>{e.name}</a>
+      {nav[page].map(e => <Link key={e.name + e.path} href={e.path}>
+        <a className={e.path === path ? styles['nav__link--active'] : styles.nav__link }>{e.name}</a>
       </Link>)}
     </nav>
   );

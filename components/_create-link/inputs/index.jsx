@@ -1,6 +1,4 @@
- 
-
-function Inputs({ formData, handleChange, style }) {
+ function Inputs({ formData, handleChange, style }) {
   return (
     <>
       <input 

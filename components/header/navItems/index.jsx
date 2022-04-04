@@ -6,7 +6,7 @@ function NavItems({ path, auth, logout }) {
     <div>
       { auth ? <>
         {auth.role === "admin" ? <Link href="/admin">
-            <a className={path === "/admin" ? classes['link--active'] : classes.link}>Admin</a>
+            <a className={path === "/admin" || path === "/admin/new-category" ? classes['link--active'] : classes.link}>Admin</a>
           </Link>          
           : null
          }

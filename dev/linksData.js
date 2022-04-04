@@ -31,22 +31,7 @@ export const DUMMY_LINKS = [
 ];
 
 export const DUMMY_CATEGORIES = [
-  {
-    _id: "1",
-    category: "forex",
-    info: "",
-    imgUrl: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
-  }, {
-    _id: "2",
-    category: "stock",
-    info: "Investing is a way to set aside money while you are busy with life and have that money work for you so that you can fully reap the rewards of your labor in the future. Investing is a means to a happier ending. Legendary investor Warren Buffett defines investing as “the process of laying out money now in the expectation of receiving more money in the future.”1 The goal of investing is to put your money to work in one or more types of investment vehicles in the hopes of growing your money over time.",
-    imgUrl: "https://images.unsplash.com/photo-1579407364450-481fe19dbfaa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
-  },{
-    _id: "3",
-    category: "bonds",
-    info: "",
-    imgUrl: "https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
-  },{
+ {
     _id: "4",
     category: "brokers",
     info: "",

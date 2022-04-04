@@ -1,5 +1,4 @@
 import dbConnect from "../../../lib/dbConnect";
-import Link from "../../../models/link";
 import withProtect from "../../../middleware/withProtect";
 import withAdmin from "../../../middleware/withAdmin";
 
@@ -10,15 +9,9 @@ async function handler(req, res) {
 
   switch (method) {
     case "GET":
-      try {
-        const links = await Link.find({ approved: true });
-
-        return links;
-      } catch {
-        return;
-      }
+      return;
     default:
-      return ;
+      return;
   }
 }
 
