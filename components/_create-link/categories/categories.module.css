@@ -4,8 +4,8 @@
 
 .container__title {
   font-size: var(--size-sub-title2);
-  margin-right: var(--distance-0);
   font-weight: bold;
+  display: block;
 }
 
 .container__categories {

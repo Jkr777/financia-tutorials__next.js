@@ -1,28 +1,26 @@
 import { useState } from "react";
+import handler from "../api/create-link";
+import axios from "axios";
 import Categories from "../../components/_create-link/categories";
 import Inputs from "../../components/_create-link/inputs";
 import styles from "../../components/_auth/auth.module.css";
 
-import { DUMMY_CATEGORIES } from "../../dev/linksData";
+function CreateLink({ categories, defaultState }) {
+  const [data, setData] = useState(defaultState);
 
-function CreateLink() {
-  const [boolData, setBoolData] = useState({
-    forex: false,
-    stock: false,
-    bonds: false,
-    brokers: false
-  });  
-  
-  const [data, setData] = useState({
-    title: "",
-    url: ""
-  });
+  const handleBoolsChange = e => setData(prev => ({...prev, categoryName: prev.categoryName !== e.target.name ? e.target.name : ""}));
+  const handleChange = e => setData(prev => ({...prev, [e.target.name]: e.target.value}));
 
-  const handleBoolsChange = e => setBoolData(prev => ({...prev, [e.target.name]: !prev[e.target.name]}));
-  const handleChange = e => setData(prev => ({...prev, [e.target.name]: e.target.val}));
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    try {
+      const res = await axios.post('/api/create-link', data);
+      console.log("res: ", res.data);
+    } catch (error) {
+      console.log("error: ", error.response.data);
+    }
+
+    setData(defaultState);
   }
 
   return (
@@ -31,11 +29,33 @@ function CreateLink() {
       <p className={styles["container__sub-title"]}>Your link can be approved or rejectected.</p>
       <form onSubmit={handleSubmit} className={styles.form}>
         <Inputs handleChange={handleChange} formData={data} style={styles.form__input} />
-        <Categories handleChange={handleBoolsChange} list={DUMMY_CATEGORIES} />
+        <Categories handleChange={handleBoolsChange} formData={data} list={categories} />
         <button className={styles.form__btn}>Create</button>
       </form>
     </section>
-  )
+  );
 }
+
+CreateLink.defaultProps = {
+  defaultState: {
+    title: "",
+    url: "",
+    categoryName: ""
+  }
+};
+
+export async function getServerSideProps(context) {
+  try {
+    const categories = await handler(context.req, context.res);
+    return {
+      props: {categories: JSON.parse(categories)}
+    }
+
+  } catch (error) { 
+    console.log(error);
+    // return { redirect: {destination: "/"} };
+  }
+}
+
 
 export default CreateLink;

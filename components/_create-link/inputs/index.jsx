@@ -7,7 +7,7 @@
         name="title"
         value={formData.title}
         onChange={handleChange}
-        maxLength="255"
+        maxLength="155"
         minLength="3"
         placeholder="title"
         autoFocus
@@ -21,7 +21,7 @@
         value={formData.url}
         onChange={handleChange}
         maxLength="255"
-        minLength="3"
+        minLength="5"
         placeholder="url"
         required
       />

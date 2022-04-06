@@ -13,7 +13,7 @@ async function handler(req, res) {
       try {
         const links = await Link.find({ approved: true });
 
-        return links;
+        return JSON.stringify(links);
       } catch {
         return;
       }

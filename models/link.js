@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const linkSchema = new mongoose.Schema({
   title: {
     type: String,
-    maxLength: 55,
+    maxLength: 155,
     minlength: 5,
     required: true,
     trim: true
