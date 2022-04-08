@@ -47,3 +47,34 @@
   font-weight: bold;
   color: #6D326D;
 }
+
+.link__btn--validate, 
+.link__btn--remove {
+  width: 15rem;
+  border: none;
+  padding: 1rem;
+  background-color: var(--color-9);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.link__btn--validate {
+  background-color: #4a329d;
+  color: #fef5f2;
+}
+
+.link__btn--remove {
+  background-color: #9b3012;
+  color: #f6f4fc;
+}
+
+.link__btn--validate:hover {
+  background-color: #fef5f2;
+  color: #4a329d;
+}
+
+.link__btn--remove:hover {
+  background-color: #f6f4fc;
+  color: #9b3012;
+}

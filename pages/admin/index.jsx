@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
     const res = await handler(context.req, context.res);
 
     return {
-      props: {links: JSON.parse(res)}
+      props: { links: JSON.parse(res) }
     }
 
   } catch {

@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: var(--distance-2);
+  background-color: var(--color-4);
+  padding: var(--distance-1);
+}
