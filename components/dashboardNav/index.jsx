@@ -23,17 +23,7 @@ function DashboardNav({ page, path }) {
         name: "New",
         path: '/category/popular'
       }
-    ],
-    dashboard: [
-      {
-        name: "Links",
-        path: '/dashboard'
-      },
-      {
-        name: "Update Profile",
-        path: '/dashboard/update-profile'
-      }                  
-    ]
+    ]                 
   });
 
   // function handleClick(name) {

@@ -5,9 +5,27 @@
 .title {
   font-size: var(--size-title);
   margin-bottom: 2rem;
+  font-weight: normal;
 }
 
 .subtitle {
   font-size: var(--size-sub-title);
   margin-bottom: 2rem;
+  font-weight: normal;
+}
+
+.delete-btn {
+  background-color: #741f00;
+  color: #f7faff;
+  width: 15rem;
+  border: none;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.delete-btn:hover {
+  background-color: #b83000;
 }
