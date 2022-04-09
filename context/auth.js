@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/auth/register`, data);
       setUser(res.data);
-      router.replace('/dashboard');
+      router.replace('/create-link');
     } catch(err) {
       setError(err.response.data);
     }
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/auth/login`, data);
       setUser(res.data);
-      router.replace('/dashboard');
+      router.replace('/create-link');
     } catch(err) {
       setError(err.response.data);
     }

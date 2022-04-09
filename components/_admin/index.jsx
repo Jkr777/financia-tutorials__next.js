@@ -12,7 +12,6 @@ function AdminData({ page, path, data }) {
     try {
      await axios.patch('/api/admin', {id});
       setListData(prev => prev.filter(i => i._id !== id));
-      console.log(res);
     } catch (error) {
       console.log(error.response.data);
     }
