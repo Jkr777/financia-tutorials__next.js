@@ -1,11 +1,11 @@
 import Link from "next/link";
 import styles from "./category.module.css";
 
-function Category({ category }) {
+function Category({ categoryName }) {
   return (
-    <Link href={`/category/${category}`}>
+    <Link href={`/category/${categoryName}`}>
       <span className={styles.category}>
-        {category}
+        {categoryName}
       </span>
     </Link>
 

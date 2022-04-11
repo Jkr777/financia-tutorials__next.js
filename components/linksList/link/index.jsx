@@ -11,7 +11,7 @@ function LinkItem({ title, url, date, categoryName, clicks }) {
         <span>{categoryName}</span>
       </div>      
       <div className={styles.item__right}>
-        <span className={styles.item__date}>{date}</span>
+        <span className={styles.item__date}>{new Date(date).toDateString()}</span>
         <span className={styles.item__clicks}> clicks {clicks}</span>
       </div>
     </div>
