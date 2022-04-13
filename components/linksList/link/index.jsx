@@ -1,10 +1,20 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
 import styles from "./link.module.css";
 
-function LinkItem({ title, url, date, categoryName, clicks }) {
+function LinkItem({ _id, title, url, date, categoryName, clicks }) {
+  const router = useRouter();
+  async function handleClick(id) {
+    try {
+      await axios.patch(`/api/links/${id}`);
+      router.push(url);
+    } catch (error) {
+      console.log("errrrr");
+    }
+  }
+
   return (
-    <Link href={url}>
-    <div className={styles.item}>
+    <div className={styles.item} onClick={() => handleClick(_id)}>
       <div className={styles.item__left }>
         <span className={styles.item__title}>{title}</span>
         <span className={styles.item__url}>{url}</span>
@@ -15,7 +25,6 @@ function LinkItem({ title, url, date, categoryName, clicks }) {
         <span className={styles.item__clicks}> clicks {clicks}</span>
       </div>
     </div>
-    </Link>
   )
 }
 

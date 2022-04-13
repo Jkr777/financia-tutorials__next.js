@@ -26,7 +26,6 @@ function Home({ links, categories }) {
 export async function getServerSideProps(context) {
   try {
     const res = await handler(context.req);
-    console.log(JSON.parse(res));
 
     return {
       props: {
