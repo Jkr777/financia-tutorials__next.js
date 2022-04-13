@@ -12,9 +12,11 @@ async function handler(req, res, params) {
         let links, category;
 
         if(res.status) {
+          const limitNr = Number(req.query.limit) || 1;
           const sortParam = req.query.sortOption === "popular" ? "clicks" : "date";
-          
-          links = await Link.find({ categoryName: req.query.id, approved: true }, {approved: 0, __v: 0}).sort({[sortParam]: -1}).limit(4);
+
+          links = await Link.find({ categoryName: req.query.id, approved: true }, {approved: 0, __v: 0}).sort({[sortParam]: -1}).skip((limitNr - 1) * 2).limit(2);
+
           return res.status(200).send(links);
         }
 

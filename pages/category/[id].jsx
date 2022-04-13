@@ -10,7 +10,9 @@ import styles from "./category.module.css";
 
 function Category({ links, category }) {
   const [linksList, changeLinksList] = useState(links);
+  const [limitNr, setLimitNr] = useState(1);
   const [option, changeOption] = useState("popular");
+  const [reqStatus, changeReqStatus] = useState(false);
   const mounted = useRef(false);
   const router = useRouter();
 
@@ -19,7 +21,8 @@ function Category({ links, category }) {
   }
 
   async function handleMore() {
-    
+    if(reqStatus) return;
+    setLimitNr(prev => prev + 1);
   }
 
   useEffect(() => {
@@ -31,13 +34,31 @@ function Category({ links, category }) {
     (async function() {
       try {
         const res = await axios.get(`/api/categories/${category.categoryName}/?sortOption=${option}`);
-        console.log(res.data)
+
         changeLinksList(res.data);
+        setLimitNr(1);
       } catch (error) {
         console.log(error);
       }
     })();
   }, [option])
+
+  useEffect(() => {
+    if(limitNr > 1) {
+      (async function() {
+        try {
+          const res = await axios.get(`/api/categories/${category.categoryName}/?sortOption=${option}&limit=${limitNr}`);
+          if(!res.data.length) {
+            changeReqStatus(true);
+          }
+          console.log("moreeeeeeeeeee")
+          changeLinksList(prev => ([...prev, ...res.data]));
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, [limitNr])
 
   return (
     <section>
@@ -53,7 +74,7 @@ function Category({ links, category }) {
       <p className={styles.category__text}>{category.info}</p>
       <CategoryNav option={option} handleChange={handleChange} />
       <LinksList links={linksList} />
-      <span>more</span>
+      <span onClick={handleMore} className={styles.category__link}>more</span>
     </section>
   );
 }
