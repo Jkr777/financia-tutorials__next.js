@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import handler from "../api/dashboard";
 import AuthContext from "../../context/auth";
+import NotificationContext from "../../context/notification";
 import _ from 'lodash';
 import axios from "axios";
 import formStyle from "../../components/_auth/auth.module.css";
@@ -9,6 +10,7 @@ import reusableStyle from "../../styles/reusable.module.css";
 function Dashboard({ userName, email }) {
   const [data, setData] = useState({userName, email, password: ""});
   const { logout } = useContext(AuthContext);
+  const { setNotification } = useContext(NotificationContext);
 
   const handleChange = e => setData(prev => ({...prev, [e.target.name]: e.target.value}));
 
@@ -19,7 +21,7 @@ function Dashboard({ userName, email }) {
         logout();
       }
     } catch (error) {
-      console.log("error: ", error.response.data)
+      setNotification(error.response.data);
     }
   }
 
@@ -30,7 +32,7 @@ function Dashboard({ userName, email }) {
       const res = await axios.patch('/api/dashboard', newData);
       setData(prev => ({...prev, ...res.data}));
     } catch (error) {
-      console.log("error: ", error.response.data);
+      setNotification(error.response.data);
     }
   }
 

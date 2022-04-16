@@ -20,13 +20,12 @@ async function handler(req, res, params) {
           return res.status(200).send(links);
         }
 
-        links = await Link.find({ categoryName: params.id, approved: true }, {approved: 0, __v: 0}).sort({clicks: -1}).limit(4);
+        links = await Link.find({ categoryName: params.id, approved: true }, {approved: 0, __v: 0}).sort({clicks: -1}).limit(2);
         category = await Category.findOne({categoryName: params.id}, {__v: 0});
 
         return JSON.stringify({ links, category });
       } catch(error) {
-        console.log("errrrrrrrrrr", error);
-        return;
+        return res.status(400).send(error);
       }
     default:
       return ;

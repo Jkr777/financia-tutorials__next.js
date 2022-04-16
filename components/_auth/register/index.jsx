@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "../../../context/auth";
+import NotificationContext from "../../../context/notification";
 import styles from "../auth.module.css";
 
 function Register({ setFormPath }) {
@@ -8,15 +9,17 @@ function Register({ setFormPath }) {
     email: "",
     password: ""
   });
-  const { register, error } = useContext(AuthContext);
- 
+  const { register, error, setError } = useContext(AuthContext);
+  const { setNotification } = useContext(NotificationContext);
+
   const handleChange = e => setData(prev => ({...prev, [e.target.name]: e.target.value}));
 
   useEffect(() => {
     if(error) {
-      console.log(error);
+      setNotification(error);
+      setError(null);
     }
-  }, [error])
+  },  [error])
 
   function handleSubmit(e) {
     e.preventDefault();

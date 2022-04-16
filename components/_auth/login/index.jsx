@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "../../../context/auth";
+import NotificationContext from "../../../context/notification";
 import Link from "next/link";
 import styles from "../auth.module.css";
 
@@ -8,13 +9,16 @@ function Login({ setFormPath }) {
     email: "",
     password: ""
   });
-  const { login, error } = useContext(AuthContext);
+  
+  const { login, error, setError } = useContext(AuthContext);
+  const { setNotification } = useContext(NotificationContext);
 
   const handleChange = e => setData(prev => ({...prev, [e.target.name]: e.target.value}));
 
   useEffect(() => {
     if(error) {
-      console.log(error);
+      setNotification(error);
+      setError(null);
     }
   },  [error])
 

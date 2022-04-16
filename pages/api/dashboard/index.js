@@ -15,8 +15,8 @@ async function handler(req, res) {
         let userData =  JSON.stringify(_.pick(user, ["userName", "email"]));
 
         return userData;
-      } catch (error) {
-        return res.status(400).send(error);
+      } catch {
+        return;
       }
     case "PATCH":
       try {

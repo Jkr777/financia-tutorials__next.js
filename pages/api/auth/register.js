@@ -29,14 +29,11 @@ export default async function handler(req, res) {
           path: '/'
         }));
 
-        res.status(201).send(_.pick(user, ["email", "userName"]));
+        return res.status(201).send(_.pick(user, ["email", "userName"]));
       } catch (error) {
-        res.status(400).send("Invalid email or password");
+        return res.status(400).send("Invalid email or password");
       }
-
-      break;
     default:
-      res.status(400).send("Invalid email or password");
       break;
   }
 }

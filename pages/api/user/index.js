@@ -8,10 +8,8 @@ async function handler(req, res) {
 
   switch (method) {
     case "GET":
-      res.status(200).send(user);
-      break;
+      return res.status(200).send(user);
     default:
-      res.status(401).send('Not Authorized');
       break;
   }
 }

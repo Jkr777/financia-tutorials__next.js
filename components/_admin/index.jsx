@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import NotificationContext from "../../context/notification";
 import DashboardNav from "../dashboardNav";
 import AdminLinksList from "./links";
 import NewCategoryForm from "../_admin/newCategoryForm";
@@ -7,13 +8,14 @@ import styles from "../../styles/reusable.module.css";
 
 function AdminData({ page, path, data }) {
   const [listData, setListData] = useState(data);
+  const { setNotification } = useContext(NotificationContext);
 
   async function handleValidation(id) {
     try {
-     await axios.patch('/api/admin', {id});
+      await axios.patch('/api/admin', {id});
       setListData(prev => prev.filter(i => i._id !== id));
     } catch (error) {
-      console.log(error.response.data);
+      setNotification(error.response.data);
     }
   }
 
@@ -22,7 +24,7 @@ function AdminData({ page, path, data }) {
       await axios.delete('/api/admin', {data: {id}});
       setListData(prev => prev.filter(i => i._id !== id));
     } catch (error) {
-      console.log(error.response.data);
+      setNotification(error.response.data);
     }
   }
 

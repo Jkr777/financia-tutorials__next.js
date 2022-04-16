@@ -3,3 +3,25 @@
   margin: 0 9rem;
   min-height: 80vh;
 }
+
+.notification--active,
+.notification--invisible{
+  position: absolute;
+  background-color: #a43500;
+  color: #fffbf9;
+  z-index: 1000;
+  padding: var(--distance-1);
+  transition: all .5s;
+}
+
+.notification--active {
+  top: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.notification--invisible {
+  top: -20%;
+  right: 0;
+  opacity: 0;
+}

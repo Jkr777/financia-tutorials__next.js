@@ -13,13 +13,11 @@ async function handler(req, res) {
     case "GET":
       try {
         const categories = await Category.find({}, {_id: 1, categoryName: 1});
-        // console.log(categories);
-        return JSON.stringify(categories);
-      } catch (error) {
-        console.log(error);
-      }
 
-      break;
+        return JSON.stringify(categories);
+      } catch {
+        return;
+      }
     case "POST":
       try {
         const { error } = joiValidation(req.body);
@@ -29,9 +27,8 @@ async function handler(req, res) {
         
         return res.status(201).send("A new link was created");
       } catch (error) {
-        console.log(error);
+        return res.status(400).send(error);
       }
-      break;
     default:
       break;
   }

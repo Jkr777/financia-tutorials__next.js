@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, Children } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useRouter } from 'next/router';
 
@@ -40,8 +40,8 @@ export const AuthProvider = ({ children }) => {
       await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/auth/logout`);
       setUser(null);
       router.replace('/');
-    } catch(err) {
-      setError(err.response.data);
+    } catch {
+      return;
     }
   }
 
@@ -50,14 +50,13 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/user`);
       setUser(res.data);
-    } catch (err) {
-      console.log(err);
-      setError(err.response.data);
+    } catch {
+      return;
     }
   }
 
   return (
-    <AuthContext.Provider value={{ user, error, register, login, logout }}>
+    <AuthContext.Provider value={{ user, error, register, login, logout, setError }}>
       {children}
     </AuthContext.Provider>
   );

@@ -7,7 +7,7 @@ function NewCategory() {
 
 export async function getServerSideProps(context) {
   try {
-    await handler(context.req, context.res);
+    await handler(context.req);
 
     return {
       props: {}

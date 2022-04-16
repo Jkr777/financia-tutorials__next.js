@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useRouter } from "next/router";
+import NotificationContext from "../../context/notification";
 import Image from "next/image";
 import handler from "../api/categories/[id]";
 import axios from "axios";
@@ -13,6 +14,7 @@ function Category({ links, category }) {
   const [limitNr, setLimitNr] = useState(1);
   const [option, changeOption] = useState("popular");
   const [reqStatus, changeReqStatus] = useState(false);
+  const { setNotification } = useContext(NotificationContext);
   const mounted = useRef(false);
   const router = useRouter();
 
@@ -38,7 +40,7 @@ function Category({ links, category }) {
         changeLinksList(res.data);
         setLimitNr(1);
       } catch (error) {
-        console.log(error);
+        setNotification(error.response.data);
       }
     })();
   }, [option])
@@ -48,13 +50,14 @@ function Category({ links, category }) {
       (async function() {
         try {
           const res = await axios.get(`/api/categories/${category.categoryName}/?sortOption=${option}&limit=${limitNr}`);
+
           if(!res.data.length) {
             changeReqStatus(true);
           }
-          console.log("moreeeeeeeeeee")
+          
           changeLinksList(prev => ([...prev, ...res.data]));
         } catch (error) {
-          console.log(error);
+          setNotification(error.response.data);
         }
       })();
     }
@@ -88,8 +91,8 @@ export async function getServerSideProps(context) {
         ...JSON.parse(res)
       }
     }
-  } catch (error) {
-    console.log(error);
+  } catch  {
+    return { redirect: {destination: "/"} };
   }
 }
 
