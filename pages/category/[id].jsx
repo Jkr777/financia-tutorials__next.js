@@ -4,6 +4,7 @@ import NotificationContext from "../../context/notification";
 import Image from "next/image";
 import handler from "../api/categories/[id]";
 import axios from "axios";
+import Spinner from "../../components/spinner";
 import CategoryNav from "../../components/categoryNav";
 import LinksList from "../../components/linksList";
 import styles from "./category.module.css";
@@ -67,12 +68,13 @@ function Category({ links, category }) {
     <section>
       <h1 className={styles.category__title}>{router.query.id}</h1>
       <div className={styles.category__img }>
-        <Image 
+        {category.imgUrl 
+          ? <Image 
           src={category.imgUrl} 
           alt="category" 
           layout="fill"
           objectFit="cover"
-        />
+        />  : <Spinner />}
       </div>
       <p className={styles.category__text}>{category.info}</p>
       <CategoryNav option={option} handleChange={handleChange} />
