@@ -68,6 +68,13 @@
   margin-bottom: 3rem;
   font-weight: bold;
   cursor: pointer;
+  border: .2rem solid var(--color-9);
+  transition: all .3s;
+}
+
+.form__btn:hover {
+  background-color: var(--color-10);
+  border: .2rem solid var(--color-9);
 }
 
 .form__link {
